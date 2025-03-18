@@ -1,0 +1,126 @@
+
+$color-white: hsl(0, 0%, 100%);
+$color-black: hsl(0, 0%, 0%);
+$color-dark-gray: hsl(0, 0%, 55%);
+$color-very-dark-gray: hsl(0, 0%, 41%);
+
+:root {
+    box-sizing: border-box;    
+    font-family: 'Alata', serif;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+*,
+::before,
+::after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+body {
+    width: 100%; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    background-color: $color-white;
+}
+main {
+    margin: 1rem;
+}
+main > * + * {
+    margin-top: 5rem;
+}
+picture > img {
+    width: 100%;
+}
+header {
+    position: relative;
+    nav {
+        width: 100%;
+        padding: 0 1rem;
+        display: flex;
+        align-items: center;
+        justify-content:space-between;
+        position: absolute;
+        top: 1rem;
+        .menu {
+            display: none;
+        }
+    }
+    h1 {
+        text-transform: uppercase;
+        font-size: 40px;
+        font-weight: 200;
+        line-height: 38px;
+        font-family: 'Josefin Sans';
+        border: solid 1pt $color-white;
+        color: $color-white;
+        padding: 1rem;
+        margin: 0 1rem;
+        position: absolute;
+        top: 34%;
+    }
+}
+.company-logo {
+    width: 50%;
+}
+h2 {
+    text-transform: uppercase;
+    font-size: 32px;
+    line-height: 32px;
+    font-weight: 200;
+    font-family: 'Josefin Sans';
+    color: $color-black;
+}
+.caption {
+    font-size: 15px;
+    line-height: 25px;
+    font-weight: 400;
+    font-family: 'Alata';
+    color: rgba($color-black, .5);
+}
+section > * {
+    text-align: center;
+}
+.creation {
+    position: relative;
+    margin-bottom: 1rem;
+    span {
+        text-transform: uppercase;
+        font-size: 1.5rem;
+        font-family: 'Josefin Sans';
+        font-weight: 200;
+        color: $color-white;
+        position: absolute;
+        bottom: 1rem;
+        left: 1rem;
+        width: 33%;
+    }
+}
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    background-color: $color-black;
+    color: $color-white;
+    nav {
+        img {
+            display: block;
+            margin: 1rem auto;
+        }
+    }
+    .menu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+    .social-media {
+        img {
+            margin: 1rem;
+        }
+    }
+}
