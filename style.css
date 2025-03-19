@@ -22,14 +22,6 @@ body {
   background-color: hsl(0, 0%, 100%);
 }
 
-main {
-  margin: 1rem;
-}
-
-main > * + * {
-  margin-top: 5rem;
-}
-
 picture > img {
   width: 100%;
 }
@@ -37,17 +29,89 @@ picture > img {
 header {
   position: relative;
 }
+header picture {
+  position: relative;
+  z-index: 0;
+}
 header nav {
   width: 100%;
   padding: 0 1rem;
+  position: absolute;
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  position: absolute;
   top: 1rem;
 }
 header nav .menu {
+  width: 100%;
+  height: 660px;
+  background-color: hsl(0, 0%, 0%);
+  position: absolute;
   display: none;
+  flex-direction: column;
+  align-items: start;
+  gap: 1rem;
+  color: hsl(0, 0%, 100%);
+  z-index: 1;
+  top: -1rem;
+  left: 0;
+  padding: 12rem 1rem 0rem 1rem;
+  font-size: 24px;
+  line-height: 25px;
+  font-family: "Josefin Sans";
+  font-weight: 200;
+}
+@media (min-width: 600px) {
+  header nav .menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: auto;
+    height: auto;
+    background-color: transparent;
+    position: static;
+    padding: 0;
+  }
+}
+header nav .menu.show {
+  display: flex;
+}
+header nav #hamburger {
+  display: inline-block;
+  position: relative;
+  z-index: 0;
+}
+header nav #hamburger:hover, header nav #hamburger:focus {
+  cursor: pointer;
+}
+@media (min-width: 600px) {
+  header nav #hamburger {
+    display: none;
+  }
+}
+header nav #close-icon {
+  display: none;
+  position: relative;
+  z-index: 1;
+}
+header nav #close-icon:hover, header nav #close-icon:focus {
+  cursor: pointer;
+}
+@media (min-width: 600px) {
+  header nav #close-icon {
+    display: none;
+  }
+}
+header nav .company-logo {
+  position: relative;
+  z-index: 2;
+}
+header nav.show .menu {
+  display: flex;
+}
+header nav.show #close-icon {
+  display: inline-block;
 }
 header h1 {
   text-transform: uppercase;
@@ -61,10 +125,16 @@ header h1 {
   margin: 0 1rem;
   position: absolute;
   top: 34%;
+  z-index: 0;
 }
 
 .company-logo {
   width: 50%;
+}
+@media (min-width: 600px) {
+  .company-logo {
+    width: 25%;
+  }
 }
 
 h2 {
@@ -84,8 +154,97 @@ h2 {
   color: rgba(0, 0, 0, 0.5);
 }
 
+section {
+  margin: 5rem 1rem;
+}
+@media (min-width: 600px) {
+  section {
+    margin: 5rem 8rem;
+  }
+}
+
 section > * {
   text-align: center;
+}
+
+.interactive {
+  position: relative;
+}
+.interactive * + * {
+  margin-top: 2rem;
+}
+.interactive h2, .interactive p {
+  padding: 0 1.5rem;
+}
+@media (min-width: 600px) {
+  .interactive picture > img {
+    width: 67%;
+  }
+  .interactive .description {
+    width: 50%;
+    padding: 3rem 0rem 0rem 3rem;
+    background-color: hsl(0, 0%, 100%);
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    text-align: left;
+  }
+}
+
+.creations {
+  position: relative;
+}
+.creations h2 {
+  margin-bottom: 3rem;
+}
+@media (min-width: 600px) {
+  .creations h2 {
+    margin-bottom: 0;
+  }
+}
+.creations .see-all {
+  display: block;
+  position: absolute;
+  bottom: -4rem;
+  left: 50%;
+  transform: translate(-50%, 0);
+  padding: 0.5rem 2rem;
+  border: solid 1pt rgba(0, 0, 0, 0.5);
+  text-transform: uppercase;
+  font-family: "Alata";
+  font-size: 14px;
+  letter-spacing: 5px;
+}
+.creations .see-all:hover, .creations .see-all:focus {
+  background-color: hsl(0, 0%, 0%);
+  color: hsl(0, 0%, 100%);
+  cursor: pointer;
+}
+@media (min-width: 600px) {
+  .creations .see-all {
+    display: inline-block;
+    position: static;
+    margin: 0;
+    transform: none;
+  }
+}
+@media (min-width: 600px) {
+  .creations .creations-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+  }
+}
+
+@media (min-width: 600px) {
+  .gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    gap: 1rem;
+  }
 }
 
 .creation {
@@ -103,6 +262,10 @@ section > * {
   left: 1rem;
   width: 33%;
 }
+.creation img:hover, .creation img:focus {
+  filter: brightness(150%);
+  cursor: pointer;
+}
 
 footer {
   display: flex;
@@ -111,6 +274,14 @@ footer {
   gap: 1rem;
   background-color: hsl(0, 0%, 0%);
   color: hsl(0, 0%, 100%);
+  margin-top: 10rem;
+}
+@media (min-width: 600px) {
+  footer {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: end;
+  }
 }
 footer nav img {
   display: block;
@@ -122,6 +293,29 @@ footer .menu {
   align-items: center;
   gap: 1rem;
 }
+@media (min-width: 600px) {
+  footer .menu {
+    flex-direction: row;
+  }
+}
+footer .social-media-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media (min-width: 600px) {
+  footer .social-media-container {
+    align-items: end;
+  }
+}
 footer .social-media img {
-  margin: 1rem;
+  padding: 0.5rem;
+}
+footer .social-media img:focus, footer .social-media img:hover {
+  border-bottom: solid 1pt hsl(0, 0%, 100%);
+}
+
+a:hover, a:focus {
+  border-bottom: solid 1pt hsl(0, 0%, 100%);
+  cursor: pointer;
 }/*# sourceMappingURL=style.css.map */

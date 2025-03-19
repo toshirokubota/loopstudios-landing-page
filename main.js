@@ -1,5 +1,16 @@
+const nav = document.getElementById('nav-bar');
 
-document.getElementById('hamburger').addEventListener('click', ()=> {
-    const nav = document.getElementById('header-nav');
-    nav.classList.toggle('show');
+const showMenu = () => {
+    nav.classList.add('show');
+}
+const hideMenu = () => {
+    nav.classList.remove('show');
+}
+
+document.getElementById('hamburger').addEventListener('click', showMenu);
+
+document.getElementById('close-icon').addEventListener('click', hideMenu);
+
+nav.querySelectorAll('.menu > a').forEach(elm => {
+    elm.addEventListener('click', hideMenu)
 });

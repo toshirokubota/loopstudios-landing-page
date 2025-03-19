@@ -3,6 +3,10 @@ $color-white: hsl(0, 0%, 100%);
 $color-black: hsl(0, 0%, 0%);
 $color-dark-gray: hsl(0, 0%, 55%);
 $color-very-dark-gray: hsl(0, 0%, 41%);
+$breakpoint: 600px;
+$nav-top-margin-mobile: 1rem;
+$nav-top-margin-desktop: 2rem;
+
 
 :root {
     box-sizing: border-box;    
@@ -10,7 +14,6 @@ $color-very-dark-gray: hsl(0, 0%, 41%);
     font-size: 16px;
     font-weight: 400;
 }
-
 *,
 ::before,
 ::after {
@@ -26,27 +29,89 @@ body {
     align-items: center; 
     background-color: $color-white;
 }
-main {
-    margin: 1rem;
-}
-main > * + * {
-    margin-top: 5rem;
-}
 picture > img {
     width: 100%;
 }
 header {
     position: relative;
+    picture {
+        position: relative;
+        z-index: 0;
+    }
     nav {
         width: 100%;
         padding: 0 1rem;
-        display: flex;
-        align-items: center;
-        justify-content:space-between;
         position: absolute;
-        top: 1rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        top: $nav-top-margin-mobile;
         .menu {
+            width: 100%;
+            height: 660px;
+            background-color: $color-black;
+            position: absolute;
             display: none;
+            flex-direction: column;
+            align-items: start;
+            gap: 1rem;
+            color: $color-white;
+            z-index: 1;
+            top: -$nav-top-margin-mobile;
+            left: 0;
+            padding: 12rem 1rem 0rem 1rem;
+            font-size: 24px;
+            line-height: 25px;
+            font-family: 'Josefin Sans';
+            font-weight: 200;
+            @media (min-width: $breakpoint){
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                width: auto;
+                height: auto;
+                background-color: transparent;
+                position: static;
+                padding: 0;
+            }
+        }
+        .menu.show {
+            display: flex;
+        }
+        #hamburger {
+            display: inline-block;
+            position: relative;
+            z-index: 0;
+            &:hover, &:focus {
+                cursor: pointer;
+            }
+            @media (min-width: $breakpoint){
+                display: none;
+            }
+        }
+        #close-icon {
+            display: none;
+            position: relative;
+            z-index: 1;
+            &:hover, &:focus {
+                cursor: pointer;
+            }
+            @media (min-width: $breakpoint){
+                display: none;
+            }
+        }
+        .company-logo {
+            position: relative;
+            z-index: 2;
+        }
+    }
+    nav.show {
+        .menu {
+            display: flex;
+        }
+        #close-icon {
+            display: inline-block;
         }
     }
     h1 {
@@ -61,10 +126,14 @@ header {
         margin: 0 1rem;
         position: absolute;
         top: 34%;
+        z-index: 0;
     }
 }
 .company-logo {
     width: 50%;
+    @media (min-width: $breakpoint){
+        width: 25%;
+    }
 }
 h2 {
     text-transform: uppercase;
@@ -81,8 +150,88 @@ h2 {
     font-family: 'Alata';
     color: rgba($color-black, .5);
 }
+section {
+    margin: 5rem 1rem;
+    @media (min-width: $breakpoint){
+        margin: 5rem 8rem;   
+    }
+}
 section > * {
     text-align: center;
+}
+.interactive {
+    position: relative;
+    * + * {
+        margin-top: 2rem;
+    }
+    h2, p {
+        padding: 0 1.5rem;
+    }
+    @media (min-width: $breakpoint){
+        picture > img {
+            width: 67%;
+        }
+        .description {
+            width: 50%;
+            padding: 3rem 0rem 0rem 3rem;
+            background-color: $color-white;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            text-align: left;
+        }
+    }
+}
+.creations {
+    position: relative;
+    h2 {
+        margin-bottom: 3rem;
+        @media (min-width: $breakpoint){
+            margin-bottom: 0;
+        }
+    }
+    .see-all {
+        display: block;
+        position: absolute;
+        bottom: -4rem;
+        left: 50%;
+        transform: translate(-50%, 0);
+        padding: 0.5rem 2rem;
+        border: solid 1pt rgba($color-black, .5);
+        text-transform: uppercase;
+        font-family: 'Alata';
+        font-size: 14px;
+        letter-spacing: 5px;
+
+        &:hover, &:focus {
+            background-color: $color-black;
+            color: $color-white;
+            cursor: pointer;
+        }
+        @media (min-width: $breakpoint){
+            display: inline-block;
+            position: static;
+            margin: 0;
+            transform: none;
+        }
+    }
+    .creations-header {
+        @media (min-width: $breakpoint){
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 3rem;
+        }
+    }
+}
+.gallery {
+    @media (min-width: $breakpoint){
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: auto;
+        gap: 1rem;
+    }
 }
 .creation {
     position: relative;
@@ -98,6 +247,10 @@ section > * {
         left: 1rem;
         width: 33%;
     }
+    img:hover, img:focus {
+        filter: brightness(150%);
+        cursor: pointer;
+    }
 }
 footer {
     display: flex;
@@ -106,6 +259,12 @@ footer {
     gap: 1rem;
     background-color: $color-black;
     color: $color-white;
+    margin-top: 10rem;
+    @media (min-width: $breakpoint){
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: end;
+    }
     nav {
         img {
             display: block;
@@ -117,10 +276,28 @@ footer {
         flex-direction: column;
         align-items: center;
         gap: 1rem;
+        @media (min-width: $breakpoint){
+            flex-direction: row;
+        }
+    }
+    .social-media-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        @media (min-width: $breakpoint){
+            align-items: end;
+        }
     }
     .social-media {
         img {
-            margin: 1rem;
+            padding: 0.5rem;
+            &:focus, &:hover {
+                border-bottom: solid 1pt $color-white;
+            }
         }
     }
+}
+a:hover, a:focus {
+    border-bottom: solid 1pt $color-white;
+    cursor: pointer;
 }
