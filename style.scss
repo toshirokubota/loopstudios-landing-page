@@ -6,11 +6,17 @@ $color-very-dark-gray: hsl(0, 0%, 41%);
 $breakpoint: 600px;
 $nav-top-margin-mobile: 1rem;
 $nav-top-margin-desktop: 2rem;
-
+@mixin typography($sz,$fm,$wt,$lh,$ls) {
+    font-size: $sz;
+    font-family: $fm, Arial, Helvetica, sans-serif;
+    font-weight: $wt;
+    line-height: $lh;
+    letter-spacing: $ls;
+}
 
 :root {
     box-sizing: border-box;    
-    font-family: 'Alata', serif;
+    font-family: 'Alata', Arial, Helvetica, sans-serif;
     font-size: 16px;
     font-weight: 400;
 }
@@ -47,6 +53,9 @@ header {
         align-items: center;
         justify-content: space-between;
         top: $nav-top-margin-mobile;
+        @media (min-width: $breakpoint){
+            padding: 0 8rem;
+        }
         .menu {
             width: 100%;
             height: 660px;
@@ -61,11 +70,13 @@ header {
             top: -$nav-top-margin-mobile;
             left: 0;
             padding: 12rem 1rem 0rem 1rem;
-            font-size: 24px;
-            line-height: 25px;
-            font-family: 'Josefin Sans';
-            font-weight: 200;
+            @include typography(24px, 'Josefin Sans', 200, 25px, 0);
+            // font-size: 24px;
+            // line-height: 25px;
+            // font-family: 'Josefin Sans';
+            // font-weight: 200;
             @media (min-width: $breakpoint){
+                font-size: 15px;
                 display: flex;
                 flex-direction: row;
                 align-items: center;
@@ -104,6 +115,10 @@ header {
         .company-logo {
             position: relative;
             z-index: 2;
+            width: 50%;
+            @media (min-width: $breakpoint){
+                width: 15%;
+            }
         }
     }
     nav.show {
@@ -116,10 +131,11 @@ header {
     }
     h1 {
         text-transform: uppercase;
-        font-size: 40px;
-        font-weight: 200;
-        line-height: 38px;
-        font-family: 'Josefin Sans';
+        // font-size: 40px;
+        // font-weight: 200;
+        // line-height: 38px;
+        // font-family: 'Josefin Sans';
+        @include typography(40px, 'Josefin Sans', 200, 38px, 0);
         border: solid 1pt $color-white;
         color: $color-white;
         padding: 1rem;
@@ -127,6 +143,12 @@ header {
         position: absolute;
         top: 34%;
         z-index: 0;
+        @media (min-width: $breakpoint){
+            @include typography(72px, 'Josefin Sans', 200, 70px, 0);
+            width: 45%;
+            left: 8rem;
+            margin: 0;
+        }
     }
 }
 .company-logo {
@@ -137,18 +159,20 @@ header {
 }
 h2 {
     text-transform: uppercase;
-    font-size: 32px;
-    line-height: 32px;
-    font-weight: 200;
-    font-family: 'Josefin Sans';
+    // font-size: 32px;
+    // line-height: 32px;
+    // font-weight: 200;
+    // font-family: 'Josefin Sans';
+    @include typography(32px, 'Josefin Sans', 200, 32px, 0);
     color: $color-black;
 }
 .caption {
-    font-size: 15px;
-    line-height: 25px;
-    font-weight: 400;
-    font-family: 'Alata';
+    @include typography(15px, 'Alata', 400, 25px, 0);
     color: rgba($color-black, .5);
+}
+.copy-right {
+    @include typography(15px, 'Alata', 400, 25px, 0);
+    color: rgba($color-white, .5);
 }
 section {
     margin: 5rem 1rem;
@@ -156,9 +180,9 @@ section {
         margin: 5rem 8rem;   
     }
 }
-section > * {
-    text-align: center;
-}
+// section > * {
+//     text-align: center;
+// }
 .interactive {
     position: relative;
     * + * {
@@ -166,14 +190,19 @@ section > * {
     }
     h2, p {
         padding: 0 1.5rem;
+        text-align: center;
     }
     @media (min-width: $breakpoint){
         picture > img {
-            width: 67%;
+            width: 63%;
+        }
+        h2 {
+            font-size: 48px;
+            line-height: 48px;
         }
         .description {
             width: 50%;
-            padding: 3rem 0rem 0rem 3rem;
+            padding: 5rem 0rem 0rem 5rem;
             background-color: $color-white;
             position: absolute;
             bottom: 0;
@@ -202,6 +231,7 @@ section > * {
         font-family: 'Alata';
         font-size: 14px;
         letter-spacing: 5px;
+        @include typography(14px, 'Alata', 400, 14px, 5px);
 
         &:hover, &:focus {
             background-color: $color-black;
@@ -238,14 +268,22 @@ section > * {
     margin-bottom: 1rem;
     span {
         text-transform: uppercase;
-        font-size: 1.5rem;
-        font-family: 'Josefin Sans';
-        font-weight: 200;
+        // font-size: 1.5rem;
+        // font-family: 'Josefin Sans';
+        // font-weight: 200;
+        @include typography(1.5rem, 'Josefin Sans', 200, 1.5rem, 0);
         color: $color-white;
         position: absolute;
         bottom: 1rem;
         left: 1rem;
         width: 33%;
+        @media (min-width: $breakpoint){
+            width: 75%;
+            font-size: 2rem;
+            line-height: 2rem;
+            left: 2rem;
+            bottom: 2rem;
+        }
     }
     img:hover, img:focus {
         filter: brightness(150%);
@@ -260,30 +298,46 @@ footer {
     background-color: $color-black;
     color: $color-white;
     margin-top: 10rem;
+    padding: 2rem;
     @media (min-width: $breakpoint){
         flex-direction: row;
         justify-content: space-between;
-        align-items: end;
+        // align-items: end;
+        padding: 2rem 8rem;
     }
     nav {
-        img {
-            display: block;
-            margin: 1rem auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        @media (min-width: $breakpoint){
+            align-items: start;
         }
+        // img {
+        //     display: block;
+        //     margin: 1rem auto;
+        // }
     }
     .menu {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 1rem;
+        gap: 2rem;
         @media (min-width: $breakpoint){
             flex-direction: row;
         }
+    }
+    .company-logo {
+        width: 50%;
+        // @media (min-width: $breakpoint){
+        //     width: 25%;
+        // }
     }
     .social-media-container {
         display: flex;
         flex-direction: column;
         align-items: center;
+        gap: 2rem;
         @media (min-width: $breakpoint){
             align-items: end;
         }
@@ -291,13 +345,17 @@ footer {
     .social-media {
         img {
             padding: 0.5rem;
+            border-bottom: solid 1pt transparent;
             &:focus, &:hover {
-                border-bottom: solid 1pt $color-white;
+                border-color: $color-white;
             }
         }
     }
 }
+a {
+    border-bottom: solid 1pt transparent;
+}
 a:hover, a:focus {
-    border-bottom: solid 1pt $color-white;
+    border-color: $color-white;
     cursor: pointer;
 }

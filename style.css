@@ -1,6 +1,6 @@
 :root {
   box-sizing: border-box;
-  font-family: "Alata", serif;
+  font-family: "Alata", Arial, Helvetica, sans-serif;
   font-size: 16px;
   font-weight: 400;
 }
@@ -43,6 +43,11 @@ header nav {
   justify-content: space-between;
   top: 1rem;
 }
+@media (min-width: 600px) {
+  header nav {
+    padding: 0 8rem;
+  }
+}
 header nav .menu {
   width: 100%;
   height: 660px;
@@ -58,12 +63,14 @@ header nav .menu {
   left: 0;
   padding: 12rem 1rem 0rem 1rem;
   font-size: 24px;
-  line-height: 25px;
-  font-family: "Josefin Sans";
+  font-family: "Josefin Sans", Arial, Helvetica, sans-serif;
   font-weight: 200;
+  line-height: 25px;
+  letter-spacing: 0;
 }
 @media (min-width: 600px) {
   header nav .menu {
+    font-size: 15px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -106,6 +113,12 @@ header nav #close-icon:hover, header nav #close-icon:focus {
 header nav .company-logo {
   position: relative;
   z-index: 2;
+  width: 50%;
+}
+@media (min-width: 600px) {
+  header nav .company-logo {
+    width: 15%;
+  }
 }
 header nav.show .menu {
   display: flex;
@@ -116,9 +129,10 @@ header nav.show #close-icon {
 header h1 {
   text-transform: uppercase;
   font-size: 40px;
+  font-family: "Josefin Sans", Arial, Helvetica, sans-serif;
   font-weight: 200;
   line-height: 38px;
-  font-family: "Josefin Sans";
+  letter-spacing: 0;
   border: solid 1pt hsl(0, 0%, 100%);
   color: hsl(0, 0%, 100%);
   padding: 1rem;
@@ -126,6 +140,18 @@ header h1 {
   position: absolute;
   top: 34%;
   z-index: 0;
+}
+@media (min-width: 600px) {
+  header h1 {
+    font-size: 72px;
+    font-family: "Josefin Sans", Arial, Helvetica, sans-serif;
+    font-weight: 200;
+    line-height: 70px;
+    letter-spacing: 0;
+    width: 45%;
+    left: 8rem;
+    margin: 0;
+  }
 }
 
 .company-logo {
@@ -140,18 +166,29 @@ header h1 {
 h2 {
   text-transform: uppercase;
   font-size: 32px;
-  line-height: 32px;
+  font-family: "Josefin Sans", Arial, Helvetica, sans-serif;
   font-weight: 200;
-  font-family: "Josefin Sans";
+  line-height: 32px;
+  letter-spacing: 0;
   color: hsl(0, 0%, 0%);
 }
 
 .caption {
   font-size: 15px;
-  line-height: 25px;
+  font-family: "Alata", Arial, Helvetica, sans-serif;
   font-weight: 400;
-  font-family: "Alata";
+  line-height: 25px;
+  letter-spacing: 0;
   color: rgba(0, 0, 0, 0.5);
+}
+
+.copy-right {
+  font-size: 15px;
+  font-family: "Alata", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  line-height: 25px;
+  letter-spacing: 0;
+  color: rgba(255, 255, 255, 0.5);
 }
 
 section {
@@ -163,10 +200,6 @@ section {
   }
 }
 
-section > * {
-  text-align: center;
-}
-
 .interactive {
   position: relative;
 }
@@ -175,14 +208,19 @@ section > * {
 }
 .interactive h2, .interactive p {
   padding: 0 1.5rem;
+  text-align: center;
 }
 @media (min-width: 600px) {
   .interactive picture > img {
-    width: 67%;
+    width: 63%;
+  }
+  .interactive h2 {
+    font-size: 48px;
+    line-height: 48px;
   }
   .interactive .description {
     width: 50%;
-    padding: 3rem 0rem 0rem 3rem;
+    padding: 5rem 0rem 0rem 5rem;
     background-color: hsl(0, 0%, 100%);
     position: absolute;
     bottom: 0;
@@ -213,6 +251,11 @@ section > * {
   text-transform: uppercase;
   font-family: "Alata";
   font-size: 14px;
+  letter-spacing: 5px;
+  font-size: 14px;
+  font-family: "Alata", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  line-height: 14px;
   letter-spacing: 5px;
 }
 .creations .see-all:hover, .creations .see-all:focus {
@@ -254,13 +297,24 @@ section > * {
 .creation span {
   text-transform: uppercase;
   font-size: 1.5rem;
-  font-family: "Josefin Sans";
+  font-family: "Josefin Sans", Arial, Helvetica, sans-serif;
   font-weight: 200;
+  line-height: 1.5rem;
+  letter-spacing: 0;
   color: hsl(0, 0%, 100%);
   position: absolute;
   bottom: 1rem;
   left: 1rem;
   width: 33%;
+}
+@media (min-width: 600px) {
+  .creation span {
+    width: 75%;
+    font-size: 2rem;
+    line-height: 2rem;
+    left: 2rem;
+    bottom: 2rem;
+  }
 }
 .creation img:hover, .creation img:focus {
   filter: brightness(150%);
@@ -275,33 +329,45 @@ footer {
   background-color: hsl(0, 0%, 0%);
   color: hsl(0, 0%, 100%);
   margin-top: 10rem;
+  padding: 2rem;
 }
 @media (min-width: 600px) {
   footer {
     flex-direction: row;
     justify-content: space-between;
-    align-items: end;
+    padding: 2rem 8rem;
   }
 }
-footer nav img {
-  display: block;
-  margin: 1rem auto;
+footer nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+@media (min-width: 600px) {
+  footer nav {
+    align-items: start;
+  }
 }
 footer .menu {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 2rem;
 }
 @media (min-width: 600px) {
   footer .menu {
     flex-direction: row;
   }
 }
+footer .company-logo {
+  width: 50%;
+}
 footer .social-media-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 2rem;
 }
 @media (min-width: 600px) {
   footer .social-media-container {
@@ -310,12 +376,17 @@ footer .social-media-container {
 }
 footer .social-media img {
   padding: 0.5rem;
+  border-bottom: solid 1pt transparent;
 }
 footer .social-media img:focus, footer .social-media img:hover {
-  border-bottom: solid 1pt hsl(0, 0%, 100%);
+  border-color: hsl(0, 0%, 100%);
+}
+
+a {
+  border-bottom: solid 1pt transparent;
 }
 
 a:hover, a:focus {
-  border-bottom: solid 1pt hsl(0, 0%, 100%);
+  border-color: hsl(0, 0%, 100%);
   cursor: pointer;
 }/*# sourceMappingURL=style.css.map */
