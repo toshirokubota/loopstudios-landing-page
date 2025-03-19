@@ -3,7 +3,7 @@ $color-white: hsl(0, 0%, 100%);
 $color-black: hsl(0, 0%, 0%);
 $color-dark-gray: hsl(0, 0%, 55%);
 $color-very-dark-gray: hsl(0, 0%, 41%);
-$breakpoint: 600px;
+$breakpoint: 1000px;
 $nav-top-margin-mobile: 1rem;
 $nav-top-margin-desktop: 3rem;
 @mixin typography($sz,$fm,$wt,$lh,$ls) {
